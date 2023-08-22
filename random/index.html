@@ -11,8 +11,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <style>
-        .textbox-group{
-            display:flex;
+        .textbox-group {
+            display: flex;
         }
     </style>
 </head>
@@ -54,9 +54,13 @@
                     </label>
                 </div>
                 <div class="textbox-group">
-                    <input type="number" name="min" placeholder="최소" value="1"/>
+                    <input type="number" name="min" placeholder="최소" value="1" />
                     <p style="width: 30px; text-align:center">~</p>
-                    <input type="number" name="max" placeholder="최대" value="50"/>
+                    <input type="number" name="max" placeholder="최대" value="50" />
+                    <p style="width: 150px; text-align: right">추첨 개수</p>
+                    <input type="number" name="number" placeholder="개수" value="1" />
+                    <p style="width: 150px; text-align:right">제외 숫자</p>
+                    <input type="number" name="exclution" placeholder="제외" />
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="defaultCheck" id="defaultCheck2" value="option2">

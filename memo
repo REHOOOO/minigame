@@ -1,3 +1,4 @@
 ajax를 이용하여 페이지 이동 없이 내용을 바꿀 수 있음
 https://getbootstrap.kr/ 부트스트랩 사용법
 firefox에서는 input type이 number이여도 text가 입력됨
+math.random() 함수 대체제 https://blog.baada.info/2018/11/javascript-mathrandom.html

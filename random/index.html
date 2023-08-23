@@ -54,19 +54,27 @@
                     </label>
                 </div>
                 <div class="textbox-group">
-                    <input type="number" name="min" placeholder="최소" value="1" />
+                    <input type="number" name="min" placeholder="최소" value="1" style="height:30px"/>
                     <p style="width: 30px; text-align:center">~</p>
-                    <input type="number" name="max" placeholder="최대" value="50" />
-                    <p style="width: 150px; text-align: right">추첨 개수</p>
-                    <input type="number" name="number" placeholder="개수" value="1" />
-                    <p style="width: 150px; text-align:right">제외 숫자</p>
-                    <input type="number" name="exclution" placeholder="제외" />
+                    <input type="number" name="max" placeholder="최대" value="50" style="height:30px"/>
+                    <p style="width: 100px; text-align: right; margin-right:3px">추첨 개수</p>
+                    <input type="number" name="number" placeholder="개수" value="1" style="height:30px"/>
+                    <p style="width: 100px; text-align: right; margin-right:3px">제외 숫자</p>
+                    <input type="text" name="exclution" placeholder="공백으로 구분" style="height:30px"/>
                 </div>
-                <div class="form-check">
+                <div class="form-check" style="margin-top:10px">
                     <input class="form-check-input" type="radio" name="defaultCheck" id="defaultCheck2" value="option2">
                     <label class="form-check-label" for="defaultCheck2">
-                        직접 입력
+                        직접 입력 (엔터로 구분)
                     </label>
+                </div>
+                <div class="textbox-group">
+                    <textarea name="list" rows="10" cols="30"></textarea>
+                    <p style="width: 100px; text-align: right; margin-right:3px">추첨 개수</p>
+                    <input type="number" name="number" placeholder="개수" value="1" style="height:30px" />
+                </div>
+                <div style="text-align:center">
+                    <button type="button" class="btn btn-primary">추첨</button>
                 </div>
             </div>
         </div>

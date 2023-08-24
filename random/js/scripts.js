@@ -11,6 +11,12 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
+    const drawbutton = document.getElementById("draw-button");  // 추첨 버튼
+    const numbercheck = document.getElementById("defaultCheck1");   // 숫자 체크
+    const writecheck = document.getElementById("defaultCheck2");    // 직접 입력 체크
+    const min = document.getElementsById("min");  // 최소값
+    const max = document.getElementsByName("max");  // 최대값
+
     if (sidebarToggle) {
         // Uncomment Below to persist sidebar toggle between refreshes
         // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
@@ -23,4 +29,15 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    drawbutton.onclick = function () {
+        alert("test");
+
+        if (numbercheck.checked) {
+            alert("1");
+            // alert(((window.crypto.getRandomValues(new Uint32Array(1)) / 4294967296)*(max.value-min.value))+min.value)
+        }
+        else if (writecheck.checked) {
+            alert("2");
+        }
+    };
 });

@@ -14,8 +14,8 @@ window.addEventListener('DOMContentLoaded', event => {
     const drawbutton = document.getElementById("draw-button");  // 추첨 버튼
     const numbercheck = document.getElementById("defaultCheck1");   // 숫자 체크
     const writecheck = document.getElementById("defaultCheck2");    // 직접 입력 체크
-    const min = document.getElementsByName("min");  // 최소값
-    const max = document.getElementsByName("max");  // 최대값
+    const min = document.getElementById("min");  // 최소값
+    const max = document.getElementById("max");  // 최대값
 
     if (sidebarToggle) {
         // Uncomment Below to persist sidebar toggle between refreshes
@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
     drawbutton.onclick = function () {
         if (numbercheck.checked) {
-            // alert(((window.crypto.getRandomValues(new Uint32Array(1)) / 4294967296)*(max.value-min.value))+min.value)
+            alert(Math.floor(((window.crypto.getRandomValues(new Uint32Array(1)) / 4294967296)*(max.value-min.value))+min.value))
         }
         else if (writecheck.checked) {
 

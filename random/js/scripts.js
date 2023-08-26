@@ -11,14 +11,14 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    const drawbutton = document.getElementById("draw-button");  // ÃßÃ· ¹öÆ°
-    const numbercheck = document.getElementById("defaultCheck1");   // ¼ıÀÚ Ã¼Å©
-    const writecheck = document.getElementById("defaultCheck2");    // Á÷Á¢ ÀÔ·Â Ã¼Å©
-    const min = document.getElementById("min");  // ÃÖ¼Ò°ª
-    const max = document.getElementById("max");  // ÃÖ´ë°ª
-    const output = document.getElementById("output"); // Ãâ·Â
-    const number = document.getElementById("number"); // Ãâ·Â °³¼ö
-    const exclution = document.getElementById("exclution"); // Á¦¿Ü ¼ıÀÚ
+    const drawbutton = document.getElementById("draw-button");  // ì¶”ì²¨ ë²„íŠ¼
+    const numbercheck = document.getElementById("defaultCheck1");   // ìˆ«ì ì²´í¬
+    const writecheck = document.getElementById("defaultCheck2");    // ì§ì ‘ ì…ë ¥ ì²´í¬
+    const min = document.getElementById("min");  // ìµœì†Œê°’
+    const max = document.getElementById("max");  // ìµœëŒ€ê°’
+    const output = document.getElementById("output"); // ì¶œë ¥
+    const number = document.getElementById("number"); // ì¶œë ¥ ê°œìˆ˜
+    const exclution = document.getElementById("exclution"); // ì œì™¸ ìˆ«ì
 
     if (sidebarToggle) {
         // Uncomment Below to persist sidebar toggle between refreshes
@@ -43,20 +43,21 @@ window.addEventListener('DOMContentLoaded', event => {
             var flag = 0;
             var exnum = 0;
             var temp = 0;
-            if (exclution.value) {  // Á¦¿Ü ¼ıÀÚ Á¤¸®
+
+            if (exclution.value) {  // ì œì™¸ ìˆ«ì ì •ë¦¬
                 var exclutionarr = exclution.value;
                 for (i = 0; i < exclutionarr.length; i++) {
-                    if (exclutionarr[i] == ' ') {   // i¹øÂ° ¹®ÀÚ°¡ °ø¹éÀÏ ¶§
-                        if (i - temp > 0) { // i°¡ tempº¸´Ù Å¬¶§
-                            exarr[exnum] = Number(exclutionarr.substring(temp, i)); // temp¿¡¼­ i-1¹øÂ° ¹®ÀÚ±îÁö exarr¿¡ ÀúÀå
+                    if (exclutionarr[i] == ' ') {   // ië²ˆì§¸ ë¬¸ìê°€ ê³µë°±ì¼ ë•Œ
+                        if (i - temp > 0) { // iê°€ tempë³´ë‹¤ í´ë•Œ
+                            exarr[exnum] = Number(exclutionarr.substring(temp, i)); // tempì—ì„œ i-1ë²ˆì§¸ ë¬¸ìê¹Œì§€ exarrì— ì €ì¥
                             temp = i + 1;
                             exnum++;
                         }
-                        else {  // i°¡ temp¶û °°°Å³ª ÀÛÀ» ¶§
+                        else {  // iê°€ tempë‘ ê°™ê±°ë‚˜ ì‘ì„ ë•Œ
                             temp = i + 1;
                         }
                     }
-                    if (i == exclutionarr.length - 1) { // ¸¶Áö¸· ¹®ÀÚ°¡ °ø¹éÀÌ ¾Æ´Ò °æ¿ì 
+                    if (i == exclutionarr.length - 1) { // ë§ˆì§€ë§‰ ë¬¸ìê°€ ê³µë°±ì´ ì•„ë‹ ê²½ìš° 
                         if (!(exclutionarr[i] == ' ')) {
                             exarr[exnum] = Number(exclutionarr.substring(temp, i+1));
                             exnum++;
@@ -65,16 +66,31 @@ window.addEventListener('DOMContentLoaded', event => {
                 }
             }
 
-            for (i = 0; i < number.value; i++) {
+            if (Number(max.value) < Number(min.value)) {    // ìµœì†Œ ìµœëŒ€ ì•ˆì „ì„± ê²€ì‚¬
+                alert("ìµœì†ŒëŠ” ìµœëŒ€ë³´ë‹¤ í´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+                return;
+            }
+
+            if (Number(number.value)>=1) {                  // ì¶”ì²¨ ê°œìˆ˜ ì•ˆì „ì„± ê²€ì‚¬
+                alert("ì¶”ì²¨ ê°œìˆ˜ëŠ” 1 ì´ìƒì´ì—¬ì•¼ í•©ë‹ˆë‹¤");
+                return;
+            }
+
+            if (((Number(max.value) - Number(min.value) + 1) - exnum) < Number(number.value)) {     // ì¶”ì²¨ ê°œìˆ˜ ì•ˆì „ì„± ê²€ì‚¬
+                alert("ì¶”ì²¨ ê°œìˆ˜ëŠ” ë²”ìœ„ ë‚´ ìˆ«ì ê°œìˆ˜ë³´ë‹¤ í´ ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
+                return;
+            }
+
+            for (i = 0; i < Number(number.value); i++) {
                 flag = 0;
                 var random = Math.floor(((window.crypto.getRandomValues(new Uint32Array(1)) / 4294967296) * (Number(max.value) - Number(min.value) + 1)) + Number(min.value));
-                for (j = 0; j < i; j++) {   // ÀÌÀü¿¡ ³ª¿Ô´ø ¼ıÀÚÀÎÁö È®ÀÎ
+                for (j = 0; j < i; j++) {   // ì´ì „ì— ë‚˜ì™”ë˜ ìˆ«ìì¸ì§€ í™•ì¸
                     if (numberarr[j] == random) {
                         flag = 1;
                         break;
                     }
                 }
-                if (flag == 0) {    // ÀÌÀü¿¡ ³ª¿Â ¼ıÀÚ°¡ ¾Æ´Ï¶ó¸é Á¦¿Ü ¼ıÀÚ¿¡ ÀÖ´ÂÁö È®ÀÎ
+                if (flag == 0) {    // ì´ì „ì— ë‚˜ì˜¨ ìˆ«ìê°€ ì•„ë‹ˆë¼ë©´ ì œì™¸ ìˆ«ìì— ìˆëŠ”ì§€ í™•ì¸
                     for (j = 0; j < exnum; j++) {
                         if (exarr[j] == random) {
                             flag = 1;
@@ -82,7 +98,7 @@ window.addEventListener('DOMContentLoaded', event => {
                         }
                     }
                 }
-                if (flag == 0) {    // ÀÌÀü¿¡ ³ª¿ÀÁöµµ ¾Ê°í Á¦¿Ü¼ıÀÚ¿¡µµ ¾øÀ¸¸é ÀúÀå
+                if (flag == 0) {    // ì´ì „ì— ë‚˜ì˜¤ì§€ë„ ì•Šê³  ì œì™¸ìˆ«ìì—ë„ ì—†ìœ¼ë©´ ì €ì¥
                     numberarr[i] = random;
                 }
                 else {
@@ -90,7 +106,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 }
             }
 
-            for (i = 0; i < number.value; i++) {
+            for (i = 0; i < Number(number.value); i++) {
                 outarr = outarr + numberarr[i] + ', ';
             }
             output.textContent = outarr;

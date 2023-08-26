@@ -58,7 +58,7 @@
                     <p style="width: 30px; text-align:center">~</p>
                     <input type="number" name="max" id="max" placeholder="최대" value="50" style="height:30px"/>
                     <p style="width: 100px; text-align: right; margin-right:3px">추첨 개수</p>
-                    <input type="number" name="number" id="number" placeholder="개수" value="1" style="height:30px"/>
+                    <input type="number" name="number" id="number" placeholder="개수" value="1" min="1" style="height:30px"/>
                     <p style="width: 100px; text-align: right; margin-right:3px">제외 숫자</p>
                     <input type="text" name="exclution" id="exclution" placeholder="공백으로 구분" style="height:30px" onKeyup="this.value=this.value.replace(/[^-0-9 ]/g,'');"/>
                 </div>

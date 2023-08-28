@@ -49,9 +49,14 @@ window.addEventListener('DOMContentLoaded', event => {
                 for (i = 0; i < exclutionarr.length; i++) {
                     if (exclutionarr[i] == ' ') {   // i번째 문자가 공백일 때
                         if (i - temp > 0) { // i가 temp보다 클때
-                            exarr[exnum] = Number(exclutionarr.substring(temp, i)); // temp에서 i-1번째 문자까지 exarr에 저장
-                            temp = i + 1;
-                            exnum++;
+                            if (Number(exclutionarr.substring(temp, i)) >= Number(min.value) && Number(exclutionarr.substring(temp, i)) <= Number(max.value)) {     // 제외 숫자는 최소값과 최대값 사이여야 함
+                                exarr[exnum] = Number(exclutionarr.substring(temp, i)); // temp에서 i-1번째 문자까지 exarr에 저장
+                                temp = i + 1;
+                                exnum++;
+                            }
+                            else {
+                                temp = i + 1;
+                            }
                         }
                         else {  // i가 temp랑 같거나 작을 때
                             temp = i + 1;
@@ -59,8 +64,10 @@ window.addEventListener('DOMContentLoaded', event => {
                     }
                     if (i == exclutionarr.length - 1) { // 마지막 문자가 공백이 아닐 경우 
                         if (!(exclutionarr[i] == ' ')) {
-                            exarr[exnum] = Number(exclutionarr.substring(temp, i+1));
-                            exnum++;
+                            if (Number(exclutionarr.substring(temp, i + 1)) >= Number(min.value) && Number(exclutionarr.substring(temp, i + 1)) <= Number(max.value)) {     // 제외 숫자는 최소값과 최대값 사이여야 함
+                                exarr[exnum] = Number(exclutionarr.substring(temp, i + 1));
+                                exnum++;
+                            }
                         }
                     }
                 }
@@ -71,7 +78,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 return;
             }
 
-            if (Number(number.value)>=1) {                  // 추첨 개수 안전성 검사
+            if (Number(number.value) < 1) {                  // 추첨 개수 안전성 검사
                 alert("추첨 개수는 1 이상이여야 합니다");
                 return;
             }

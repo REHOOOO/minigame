@@ -114,11 +114,16 @@ window.addEventListener('DOMContentLoaded', event => {
             }
 
             if (Number(number.value) == 1) {
-
+                outarr = numberarr[0];
             }
             else {
                 for (i = 0; i < Number(number.value); i++) {
-                    outarr = outarr + numberarr[i] + ', ';
+                    if (i == Number(number.value) - 1) {
+                        outarr = outarr + numberarr[i];
+                    }
+                    else {
+                        outarr = outarr + numberarr[i] + ', ';
+                    }
                 }
             }
             

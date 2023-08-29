@@ -113,9 +113,15 @@ window.addEventListener('DOMContentLoaded', event => {
                 }
             }
 
-            for (i = 0; i < Number(number.value); i++) {
-                outarr = outarr + numberarr[i] + ', ';
+            if (Number(number.value) == 1) {
+
             }
+            else {
+                for (i = 0; i < Number(number.value); i++) {
+                    outarr = outarr + numberarr[i] + ', ';
+                }
+            }
+            
             output.textContent = outarr;
         }
         else if (writecheck.checked) {
